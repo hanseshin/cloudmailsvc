@@ -15,7 +15,7 @@ APP_VERSION = "3.0.0-dev"  # (str)
 APP_ROOT_PATH = "."  # (str)
 
 # Hostname or IP address for the Flask application
-APP_HOST = socket.gethostbyname(socket.gethostname())  # (str)
+APP_HOST = "0.0.0.0"  # (str)
 
 # Port number for the Flask application
 APP_PORT = 5000  # (int)

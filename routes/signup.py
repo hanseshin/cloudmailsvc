@@ -9,6 +9,7 @@ from modules import (
     RECAPTCHA_VERIFY_URL,  # Recaptcha verification URL
     REGISTRATION,  # Flag for enabling/disabling user registration
     SMTP_MAIL,  # SMTP email address
+    SMTP_USER,
     SMTP_PASSWORD,  # SMTP password
     SMTP_PORT,  # SMTP port number
     SMTP_SERVER,  # SMTP server address
@@ -198,7 +199,7 @@ def signup():
                                                                     )
                                                                     server.ehlo()
                                                                     server.login(
-                                                                        SMTP_MAIL,
+                                                                        SMTP_USER,
                                                                         SMTP_PASSWORD,
                                                                     )
                                                                     # Compose email message

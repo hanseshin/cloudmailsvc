@@ -97,12 +97,9 @@ SMTP_SERVER = "email-smtp.ap-northeast-2.amazonaws.com"  # (str)
 # SMTP server port
 SMTP_PORT = 587  # (int)
 
-# SMTP mail address
-SMTP_MAIL = "AKIA3B5SO64XN3XCUAAW"  # (str)
-
-# SMTP mail password
-SMTP_PASSWORD = "BK03Tir2pEa4Qa1uHhOmCmjYAxhM9xGdTdJJbrQCiYPP"  # (str)
-
+SMTP_MAIL = "hansesin143@gmail.com"          # 발신자 이메일 (도메인 인증된 주소)
+SMTP_USER = "AKIA3B5SO64XN3XCUAAW"   
+SMTP_PASSWORD = "BK03Tir2pEa4Qa1uHhOmCmjYAxhM9xGdTdJJbrQCiYPP" # SES SMTP 비밀번호
 
 ### DEFAULT ADMIN ACCOUNT SETTINGS ###
 

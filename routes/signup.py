@@ -309,7 +309,7 @@ def signup():
                                                             )
                                                             server.ehlo()
                                                             server.login(
-                                                                SMTP_MAIL, SMTP_PASSWORD
+                                                                SMTP_USER, SMTP_PASSWORD
                                                             )
                                                             # Compose email message
                                                             mail = EmailMessage()

@@ -15,7 +15,7 @@ APP_VERSION = "3.0.0-dev"  # (str)
 APP_ROOT_PATH = "."  # (str)
 
 # Hostname or IP address for the Flask application
-APP_HOST = "0.0.0.0"  # (str)
+APP_HOST = "0.0.0.0"  
 
 # Port number for the Flask application
 APP_PORT = 5000  # (int)
@@ -92,16 +92,16 @@ DB_ANALYTICS_ROOT = DB_FOLDER_ROOT + "analytics.db"  # (str)
 ### SMTP MAIL SETTINGS ###
 
 # SMTP server address
-SMTP_SERVER = "smtp.gmail.com"  # (str)
+SMTP_SERVER = "email-smtp.ap-northeast-2.amazonaws.com"  # (str)
 
 # SMTP server port
 SMTP_PORT = 587  # (int)
 
 # SMTP mail address
-SMTP_MAIL = "flaskblogdogukanurker@gmail.com"  # (str)
+SMTP_MAIL = "AKIA3B5SO64XN3XCUAAW"  # (str)
 
 # SMTP mail password
-SMTP_PASSWORD = "lsooxsmnsfnhnixy"  # (str)
+SMTP_PASSWORD = "BK03Tir2pEa4Qa1uHhOmCmjYAxhM9xGdTdJJbrQCiYPP"  # (str)
 
 
 ### DEFAULT ADMIN ACCOUNT SETTINGS ###

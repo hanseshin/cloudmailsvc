@@ -43,7 +43,7 @@ def logout():
                 language=session["language"],
             )  # Display a flash message indicating the user has logged out
             session.pop("userName")  # Clear the userName data from session
-            session.pop("userRole")  # Clear the userRole data from session
+            session.pop("userRole,None")  # Clear the userRole data from session
             return redirect("/")  # Return a redirect response to the homepage
         case False:  # If the user is not logged in
             Log.error(

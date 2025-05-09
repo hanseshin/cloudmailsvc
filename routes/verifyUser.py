@@ -8,6 +8,7 @@ from modules import (
     RECAPTCHA_VERIFY_URL,  # Recaptcha verification URL
     RECAPTCHA_VERIFY_USER,  # Flag for enabling/disabling Recaptcha for verify user
     SMTP_MAIL,  # SMTP email address
+    SMTP_USER,
     SMTP_PASSWORD,  # SMTP password
     SMTP_PORT,  # SMTP port number
     SMTP_SERVER,  # SMTP server address
@@ -195,7 +196,7 @@ def verifyUser(codeSent):
                                             server.starttls(context=context)
                                             server.ehlo()
                                             server.login(
-                                                SMTP_MAIL,
+                                                SMTP_USER,
                                                 SMTP_PASSWORD,
                                             )
                                             # Generate a random verification code

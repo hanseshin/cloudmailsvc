@@ -251,7 +251,14 @@ def signup():
                                                                     admin_mail["Subject"] = f"[Admin Alert] New signup: {userName}"
                                                                     admin_mail["From"] = SMTP_MAIL
                                                                     admin_mail["To"] = "hansesin143@gmail.com"
-                                                                    server.send_message(admin_mail)
+                                                                    
+                                                                    
+                                                                    try:
+                                                                        server.send_message(admin_mail)
+                                                                        Log.success(f"Admin notified of new signup: {userName}")
+                                                                    except Exception as e:
+                                                                        Log.error(f"Failed to notify admin: {str(e)}")                                                                        
+                                                                   
 
                                                                     
                                                                     slack_message = {
@@ -263,11 +270,7 @@ def signup():
                                                                          Log.success(f"Slack notified for new signup: {userName}")
                                                                     except Exception as e:
                                                                          Log.error(f"Slack notification failed: {str(e)}")
-                                                                    try:
-                                                                        server.send_message(admin_mail)
-                                                                        Log.success(f"Admin notified of new signup: {userName}")
-                                                                    except Exception as e:
-                                                                        Log.error(f"Failed to notify admin: {str(e)}")                                                                        
+                                                                         
                                                                     server.quit()
                                                                     # Redirect user for further verification
                                                                     return redirect(

@@ -101,7 +101,9 @@ SMTP_MAIL = "noreply@cloudmailsvc.com"          # 발신자 이메일 (도메인
 SMTP_USER = "AKIA3B5SO64XN3XCUAAW"   
 SMTP_PASSWORD = "BK03Tir2pEa4Qa1uHhOmCmjYAxhM9xGdTdJJbrQCiYPP" # SES SMTP 비밀번호
 
-### DEFAULT ADMIN ACCOUNT SETTINGS ###
+
+### slack webhook ###
+SLACK_WEBHOOK_URL ="https://hooks.slack.com/services/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"
 
 # Toggle creation of default admin account
 DEFAULT_ADMIN = False  # (bool)

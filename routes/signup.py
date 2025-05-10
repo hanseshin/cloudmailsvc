@@ -31,6 +31,7 @@ from modules import (
     smtplib,  # SMTP client module
     sqlite3,  # SQLite database module
     ssl,  # SSL/TLS module
+    SLACK_WEBHOOK_URL
 )
 
 # Create a blueprint for the signup route
@@ -244,7 +245,7 @@ def signup():
                                                                     server.send_message(
                                                                         mail
                                                                     )
-                                                                    SLACK_WEBHOOK_URL ="https://hooks.slack.com/services/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"
+                                                                   
 
                                                                     admin_mail = EmailMessage()
                                                                     admin_mail.set_content(f"New user signed up: {userName} ({email})")
@@ -254,24 +255,29 @@ def signup():
                                                                     
                                                                     
                                                                     try:
+                                                                        print(">> Admin mail send attempt")
                                                                         server.send_message(admin_mail)
                                                                         Log.success(f"Admin notified of new signup: {userName}")
                                                                     except Exception as e:
+                                                                        print(">> Admin mail failed")
                                                                         Log.error(f"Failed to notify admin: {str(e)}")                                                                        
                                                                    
 
-                                                                    
+                                                                    server.quit()
                                                                     slack_message = {
                                                                             "text": f"📬 New user signup: *{userName}* ({email}) just joined {APP_NAME}!"
                                                                         }
 
                                                                     try:
+                                                                         print(">> Slack notify send attempt")
                                                                          requests.post(SLACK_WEBHOOK_URL, json=slack_message)
                                                                          Log.success(f"Slack notified for new signup: {userName}")
                                                                     except Exception as e:
+                                                                         print(">> Slack failed")
                                                                          Log.error(f"Slack notification failed: {str(e)}")
                                                                          
-                                                                    server.quit()
+                                                                  
+                                                                    
                                                                     # Redirect user for further verification
                                                                     return redirect(
                                                                         "/verifyUser/codesent=false"

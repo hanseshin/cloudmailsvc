@@ -36,13 +36,7 @@ from modules import (
 # Create a blueprint for the signup route
 signUpBlueprint = Blueprint("signup", __name__)
 
-SLACK_WEBHOOK_URL ="https://hooks.slack.com/services/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"
 
-admin_mail = EmailMessage()
-admin_mail.set_content(f"New user signed up: {userName} ({email})")
-admin_mail["Subject"] = f"[Admin Alert] New Signup on {APP_NAME}"
-admin_mail["From"] = SMTP_MAIL
-admin_mail["To"] = "hansesin143@gmail.com"
 
 # Define the route handler for the signup page
 @signUpBlueprint.route("/signup", methods=["GET", "POST"])
@@ -250,6 +244,15 @@ def signup():
                                                                     server.send_message(
                                                                         mail
                                                                     )
+                                                                    SLACK_WEBHOOK_URL ="https://hooks.slack.com/services/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"
+
+                                                                    admin_mail = EmailMessage()
+                                                                    admin_mail.set_content(f"New user signed up: {userName} ({email})")
+                                                                    admin_mail["Subject"] = f"[Admin Alert] New signup: {userName}"
+                                                                    admin_mail["From"] = SMTP_MAIL
+                                                                    admin_mail["To"] = "hansesin143@gmail.com"
+                                                                    server.send_message(admin_mail)
+
                                                                     
                                                                     slack_message = {
                                                                             "text": f"📬 New user signup: *{userName}* ({email}) just joined {APP_NAME}!"

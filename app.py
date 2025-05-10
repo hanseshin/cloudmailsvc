@@ -380,7 +380,7 @@ def afterRequest(response):
     # Call the afterRequestLogger function and return its result
     return afterRequestLogger(response)
 
-
+'''
 # Registering blueprints for different routes with the Flask application instance
 app.register_blueprint(
     postBlueprint
@@ -463,7 +463,7 @@ app.register_blueprint(
 app.register_blueprint(
     returnPostAnalyticsDataBlueprint
 )  # Registering the blueprint for the postAnalyticsData endpoint route
-
+'''
 # Check if the name of the module is the main module
 match __name__:
     case "__main__":

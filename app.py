@@ -189,6 +189,7 @@ from utils.errorHandlers.notFoundErrorHandler import (
 from utils.errorHandlers.unauthorizedErrorHandler import (
     unauthorizedErrorHandler,
 )  # This function handles unauthorized access errors
+from utils.generateUrlIdFromPost import getSlugFromPostTitle
 
 # Create a Flask app object with the app name, root path, static folder and template folder
 app = Flask(
@@ -197,6 +198,9 @@ app = Flask(
     static_folder=STATIC_FOLDER,  # The folder where the static files(*.js/*.css) are stored
     template_folder=TEMPLATE_FOLDER,  # The folder where the Jinja(*.html.jinja) templates are stored
 )
+
+
+
 
 # Enable autoescape for all rendered jinja pages irrespective of file extension.
 app.jinja_options["autoescape"] = True
@@ -380,7 +384,9 @@ def afterRequest(response):
     # Call the afterRequestLogger function and return its result
     return afterRequestLogger(response)
 
-
+@app.context_processor
+def inject_custom_functions():
+    return dict(getSlugFromPostTitle=getSlugFromPostTitle)
 # Registering blueprints for different routes with the Flask application instance
 app.register_blueprint(
     postBlueprint

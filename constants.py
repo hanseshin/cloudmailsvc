@@ -42,7 +42,7 @@ REGISTRATION = True  # (bool)
 LANGUAGES = ["en", "tr", "es", "de", "zh", "fr", "uk", "ru", "pt", "ja", "pl"]  # (list)
 
 # Enable or Disable analytics feature for posts
-ANALYTICS = False  # (bool)
+ANALYTICS = True  # (bool)
 
 ### LOGGER SETTINGS ###
 # Toggle custom logging feature
@@ -142,16 +142,16 @@ RECAPTCHA_SECRET_KEY = ""  # (str)
 RECAPTCHA_VERIFY_URL = "https://www.google.com/recaptcha/api/siteverify"  # (str)
 
 # Toggle reCAPTCHA verification for different actions
-RECAPTCHA_LOGIN = False  # (bool)
-RECAPTCHA_SIGN_UP = False  # (bool)
-RECAPTCHA_POST_CREATE = False  # (bool)
-RECAPTCHA_POST_EDIT = False  # (bool)
-RECAPTCHA_POST_DELETE = False  # (bool)
-RECAPTCHA_COMMENT = False  # (bool)
-RECAPTCHA_COMMENT_DELETE = False  # (bool)
-RECAPTCHA_PASSWORD_RESET = False  # (bool)
-RECAPTCHA_PASSWORD_CHANGE = False  # (bool)
-RECAPTCHA_USERNAME_CHANGE = False  # (bool)
-RECAPTCHA_VERIFY_USER = False  # (bool)
-RECAPTCHA_DELETE_USER = False  # (bool)
-RECAPTCHA_PROFILE_PICTURE_CHANGE = False  # (bool)
+RECAPTCHA_LOGIN = True  # (bool)
+RECAPTCHA_SIGN_UP = True  # (bool)
+RECAPTCHA_POST_CREATE = True  # (bool)
+RECAPTCHA_POST_EDIT = True  # (bool)
+RECAPTCHA_POST_DELETE = True  # (bool)
+RECAPTCHA_COMMENT = True  # (bool)
+RECAPTCHA_COMMENT_DELETE = True  # (bool)
+RECAPTCHA_PASSWORD_RESET = True  # (bool)
+RECAPTCHA_PASSWORD_CHANGE = True  # (bool)
+RECAPTCHA_USERNAME_CHANGE = True  # (bool)
+RECAPTCHA_VERIFY_USER = True  # (bool)
+RECAPTCHA_DELETE_USER = True  # (bool)
+RECAPTCHA_PROFILE_PICTURE_CHANGE = True  # (bool)

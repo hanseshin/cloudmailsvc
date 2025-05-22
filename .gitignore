@@ -1,4 +1,24 @@
-venv/
+# Python
 __pycache__/
-.env
-*.db
+*.pyc
+
+# Logs
+*.log
+
+
+# Terraform
+*.tfstate
+*.tfstate.backup
+.terraform/
+
+# Lambda packages
+terraform/lambda.zip
+terraform/lambda_src/__pycache__/
+terraform/lambda_src/*.dist-info/
+terraform/lambda_src/*.egg-info/
+terraform/lambda_src/*.pyc
+
+# IDE/Editor
+.vscode/
+.idea/
+.DS_Store

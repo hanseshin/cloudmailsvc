@@ -1,0 +1,324 @@
+{
+  "version": 4,
+  "terraform_version": "1.11.3",
+  "serial": 31,
+  "lineage": "eeabba55-0c79-5500-f7f6-554d29e87ff0",
+  "outputs": {
+    "lambda_function_name": {
+      "value": "route53_alert_handler",
+      "type": "string"
+    },
+    "sns_topic_arn": {
+      "value": "arn:aws:sns:ap-northeast-2:760046614318:cloudwatch-alarm-topic",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "managed",
+      "type": "aws_cloudwatch_log_group",
+      "name": "lambda_log_group",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:logs:ap-northeast-2:760046614318:log-group:/aws/lambda/route53_alert_handler",
+            "id": "/aws/lambda/route53_alert_handler",
+            "kms_key_id": "",
+            "log_group_class": "STANDARD",
+            "name": "/aws/lambda/route53_alert_handler",
+            "name_prefix": "",
+            "retention_in_days": 14,
+            "skip_destroy": false,
+            "tags": {},
+            "tags_all": {}
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.alert_handler"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_cloudwatch_metric_alarm",
+      "name": "route53_alarm",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"].useast1",
+      "instances": [
+        {
+          "schema_version": 1,
+          "attributes": {
+            "actions_enabled": true,
+            "alarm_actions": null,
+            "alarm_description": "Route53 헬스체크 실패 시 알람 발생",
+            "alarm_name": "Route53HealthCheckFail",
+            "arn": "arn:aws:cloudwatch:us-east-1:760046614318:alarm:Route53HealthCheckFail",
+            "comparison_operator": "LessThanThreshold",
+            "datapoints_to_alarm": 0,
+            "dimensions": {
+              "HealthCheckId": "2fa3b506-4146-4b78-8bd4-4a5421aa8db9"
+            },
+            "evaluate_low_sample_count_percentiles": "",
+            "evaluation_periods": 1,
+            "extended_statistic": "",
+            "id": "Route53HealthCheckFail",
+            "insufficient_data_actions": null,
+            "metric_name": "HealthCheckStatus",
+            "metric_query": [],
+            "namespace": "AWS/Route53",
+            "ok_actions": null,
+            "period": 60,
+            "statistic": "Minimum",
+            "tags": null,
+            "tags_all": {},
+            "threshold": 1,
+            "threshold_metric_id": "",
+            "treat_missing_data": "missing",
+            "unit": ""
+          },
+          "sensitive_attributes": [],
+          "private": "eyJzY2hlbWFfdmVyc2lvbiI6IjEifQ=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role",
+      "name": "lambda_exec",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:iam::760046614318:role/lambda_exec_role",
+            "assume_role_policy": "{\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}],\"Version\":\"2012-10-17\"}",
+            "create_date": "2025-05-18T14:48:44Z",
+            "description": "",
+            "force_detach_policies": false,
+            "id": "lambda_exec_role",
+            "inline_policy": [],
+            "managed_policy_arns": [
+              "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
+              "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+            ],
+            "max_session_duration": 3600,
+            "name": "lambda_exec_role",
+            "name_prefix": "",
+            "path": "/",
+            "permissions_boundary": "",
+            "tags": {},
+            "tags_all": {},
+            "unique_id": "AROA3B5SO64XOBMVYZCGX"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "lambda_basic_execution",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "lambda_exec_role-20250518144846092400000001",
+            "policy_arn": "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+            "role": "lambda_exec_role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.lambda_exec"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_iam_role_policy_attachment",
+      "name": "lambda_s3",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "id": "lambda_exec_role-20250518144846355100000002",
+            "policy_arn": "arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess",
+            "role": "lambda_exec_role"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.lambda_exec"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_function",
+      "name": "alert_handler",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "architectures": [
+              "x86_64"
+            ],
+            "arn": "arn:aws:lambda:ap-northeast-2:760046614318:function:route53_alert_handler",
+            "code_sha256": "+WjnTVJQ5u/bH5jv/FPJIUjJT6tDF7Iw1QycRncQtHU=",
+            "code_signing_config_arn": "",
+            "dead_letter_config": [],
+            "description": "",
+            "environment": [
+              {
+                "variables": {
+                  "EC2_BACKUP_API": "http://3.37.80.69:5000/webhook/backup",
+                  "VMWARE_API": "http://125.179.40.152:5000/webhook/restore",
+                  "WEBHOOK_URL": "https://hooks.slack.com/services/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"
+                }
+              }
+            ],
+            "ephemeral_storage": [
+              {
+                "size": 512
+              }
+            ],
+            "file_system_config": [],
+            "filename": "lambda.zip",
+            "function_name": "route53_alert_handler",
+            "handler": "index.handler",
+            "id": "route53_alert_handler",
+            "image_config": [],
+            "image_uri": "",
+            "invoke_arn": "arn:aws:apigateway:ap-northeast-2:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-northeast-2:760046614318:function:route53_alert_handler/invocations",
+            "kms_key_arn": "",
+            "last_modified": "2025-05-18T14:48:55.298+0000",
+            "layers": [],
+            "logging_config": [
+              {
+                "application_log_level": "",
+                "log_format": "Text",
+                "log_group": "/aws/lambda/route53_alert_handler",
+                "system_log_level": ""
+              }
+            ],
+            "memory_size": 128,
+            "package_type": "Zip",
+            "publish": false,
+            "qualified_arn": "arn:aws:lambda:ap-northeast-2:760046614318:function:route53_alert_handler:$LATEST",
+            "qualified_invoke_arn": "arn:aws:apigateway:ap-northeast-2:lambda:path/2015-03-31/functions/arn:aws:lambda:ap-northeast-2:760046614318:function:route53_alert_handler:$LATEST/invocations",
+            "replace_security_groups_on_destroy": null,
+            "replacement_security_group_ids": null,
+            "reserved_concurrent_executions": -1,
+            "role": "arn:aws:iam::760046614318:role/lambda_exec_role",
+            "runtime": "python3.10",
+            "s3_bucket": null,
+            "s3_key": null,
+            "s3_object_version": null,
+            "signing_job_arn": "",
+            "signing_profile_version_arn": "",
+            "skip_destroy": false,
+            "snap_start": [],
+            "source_code_hash": "+WjnTVJQ5u/bH5jv/FPJIUjJT6tDF7Iw1QycRncQtHU=",
+            "source_code_size": 952434,
+            "tags": {},
+            "tags_all": {},
+            "timeout": 3,
+            "timeouts": null,
+            "tracing_config": [
+              {
+                "mode": "PassThrough"
+              }
+            ],
+            "version": "$LATEST",
+            "vpc_config": []
+          },
+          "sensitive_attributes": [],
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsImRlbGV0ZSI6NjAwMDAwMDAwMDAwLCJ1cGRhdGUiOjYwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "aws_iam_role.lambda_exec"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_lambda_permission",
+      "name": "allow_sns_invoke",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "action": "lambda:InvokeFunction",
+            "event_source_token": null,
+            "function_name": "route53_alert_handler",
+            "function_url_auth_type": null,
+            "id": "AllowExecutionFromSNS",
+            "principal": "sns.amazonaws.com",
+            "principal_org_id": null,
+            "qualifier": "",
+            "source_account": null,
+            "source_arn": "arn:aws:sns:ap-northeast-2:760046614318:cloudwatch-alarm-topic",
+            "statement_id": "AllowExecutionFromSNS",
+            "statement_id_prefix": ""
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.alert_handler",
+            "aws_sns_topic.alarm_topic"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "aws_sns_topic_subscription",
+      "name": "lambda_subscription",
+      "provider": "provider[\"registry.terraform.io/hashicorp/aws\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "arn": "arn:aws:sns:ap-northeast-2:760046614318:cloudwatch-alarm-topic:d5314787-ed98-411f-88ce-22bfce6dcd61",
+            "confirmation_timeout_in_minutes": 1,
+            "confirmation_was_authenticated": true,
+            "delivery_policy": "",
+            "endpoint": "arn:aws:lambda:ap-northeast-2:760046614318:function:route53_alert_handler",
+            "endpoint_auto_confirms": false,
+            "filter_policy": "",
+            "filter_policy_scope": "",
+            "id": "arn:aws:sns:ap-northeast-2:760046614318:cloudwatch-alarm-topic:d5314787-ed98-411f-88ce-22bfce6dcd61",
+            "owner_id": "760046614318",
+            "pending_confirmation": false,
+            "protocol": "lambda",
+            "raw_message_delivery": false,
+            "redrive_policy": "",
+            "replay_policy": "",
+            "subscription_role_arn": "",
+            "topic_arn": "arn:aws:sns:ap-northeast-2:760046614318:cloudwatch-alarm-topic"
+          },
+          "sensitive_attributes": [],
+          "private": "bnVsbA==",
+          "dependencies": [
+            "aws_iam_role.lambda_exec",
+            "aws_lambda_function.alert_handler",
+            "aws_sns_topic.alarm_topic"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}

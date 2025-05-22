@@ -1,7 +1,8 @@
 """
 This file contains the main function
 """
-
+import subprocess
+from flask import request
 from modules import (
     Log,  # Importing the Log class for logging
     currentTimeStamp,  # Importing the currentTimeStamp function for getting the current timestamp
@@ -355,6 +356,25 @@ usersTable()
 postsTable()
 commentsTable()
 analyticsTable()
+
+#ec2 sqlite-> s3 백업
+@app.route("/webhook/backup", methods=["POST"])
+def backup_to_s3():
+    try:
+        subprocess.call(["/home/ubuntu/cloudmailsvc/backup-server/backup-to-s3.sh"])
+        return " 백업 스크립트 실행 완료", 200
+    except Exception as e:
+        return f" 백업 실패: {str(e)}", 500
+
+
+#s3->vmware 자동 복원
+@app.route("/webhook/restore", methods=["POST"])
+def restore_from_s3():
+    try:
+        subprocess.call(["/home/hans/cloudmailsvc/backup-server/restore-from-s3.sh"])
+        return " 복원 시작됨", 200
+    except Exception as e:
+        return f" 복원 실패: {str(e)}", 500
 
 
 # Use the app.errorhandler decorator to register error handler functions for app

@@ -361,7 +361,7 @@ analyticsTable()
 @app.route("/webhook/backup", methods=["POST"])
 def backup_to_s3():
     try:
-        subprocess.call(["/home/ubuntu/cloudmailsvc/backup-server/backup-to-s3.sh"])
+        subprocess.call(["/home/hans/cloudmailsvc/backup-server/backup-to-s3.sh"])
         return " 백업 스크립트 실행 완료", 200
     except Exception as e:
         return f" 백업 실패: {str(e)}", 500

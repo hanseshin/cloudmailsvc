@@ -9,6 +9,7 @@ from modules import (
     terminalASCII,  # Importing the terminalASCII function for displaying ASCII art in the terminal
     timedelta,  # Importing the timedelta class for working with time differences
 )
+csrf = CSRFProtect(app)
 
 # Get the start time of the app
 startTime = currentTimeStamp()

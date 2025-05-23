@@ -369,16 +369,13 @@ def backup_to_s3():
 
 
 @app.route("/webhook/restore", methods=["POST"])
+@csrf.exempt
 def restore_from_s3():
     try:
         subprocess.call(["/home/hans/cloudmailsvc/backup-server/restore-from-s3.sh"])
         return " 복원 시작됨", 200
     except Exception as e:
         return f" 복원 실패: {str(e)}", 500
-
-# 명시적으로 제외
-csrf.exempt(restore_from_s3)
-
 
 
 # Use the app.errorhandler decorator to register error handler functions for app

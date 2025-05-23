@@ -201,7 +201,7 @@ app = Flask(
     static_folder=STATIC_FOLDER,  # The folder where the static files(*.js/*.css) are stored
     template_folder=TEMPLATE_FOLDER,  # The folder where the Jinja(*.html.jinja) templates are stored
 )
-
+app.config["WTF_CSRF_ENABLED"] = False
 csrf = CSRFProtect(app)
 
 

@@ -214,8 +214,6 @@ app.config["SESSION_PERMANENT"] = (
     SESSION_PERMANENT  # A flag that determines if the session is permanent or not
 )
 
-# Create a CSRFProtect object for the app
-csrf = CSRFProtect(app)  # A CSRF protection mechanism for the app
 
 # Register the custom functions from the contextProcessor module as context processors for the app
 # Context processors are functions that run before rendering a template and add variables to the template context

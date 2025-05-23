@@ -9,7 +9,7 @@ from modules import (
     terminalASCII,  # Importing the terminalASCII function for displaying ASCII art in the terminal
     timedelta,  # Importing the timedelta class for working with time differences
 )
-csrf = CSRFProtect(app)
+
 
 # Get the start time of the app
 startTime = currentTimeStamp()
@@ -24,6 +24,7 @@ Log.info("Starting...")
 from flask_wtf.csrf import (
     CSRFError,
     CSRFProtect,
+
 )  # Importing CSRF protection for Flask forms
 
 # Importing various configuration variables from the modules
@@ -201,7 +202,7 @@ app = Flask(
     template_folder=TEMPLATE_FOLDER,  # The folder where the Jinja(*.html.jinja) templates are stored
 )
 
-
+csrf = CSRFProtect(app)
 
 
 # Enable autoescape for all rendered jinja pages irrespective of file extension.

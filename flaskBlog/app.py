@@ -371,7 +371,7 @@ def backup_to_s3():
 
 
 @app.route("/webhook/restore", methods=["POST"])
-@csrf_exempt
+@csrf.exempt
 def restore_from_s3():
     try:
         subprocess.call(["/home/hans/cloudmailsvc/backup-server/restore-from-s3.sh"])

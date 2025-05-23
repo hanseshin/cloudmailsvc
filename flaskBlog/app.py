@@ -367,9 +367,8 @@ def backup_to_s3():
         return f" 백업 실패: {str(e)}", 500
 
 
-
-@app.route("/webhook/restore", methods=["POST"])
 @csrf.exempt
+@app.route("/webhook/restore", methods=["POST"])
 def restore_from_s3():
     try:
         subprocess.call(["/home/hans/cloudmailsvc/backup-server/restore-from-s3.sh"])

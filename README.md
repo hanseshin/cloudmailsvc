@@ -54,10 +54,10 @@ EC2 서버가 다운되면 자동으로 VMware에서 복원 서버가 활성화�
 
 - AWS: EC2, S3, Lambda, CloudWatch, Route53, SNS, IAM, SES
 - Flask, SQLite
-- VMware + NAT + 포트포워딩
-- Grafana
+- VMware + Bridge + 포트포워딩
 - Terraform
 - Slack Webhook
+- Docker
 ---
 
 ## 📬 연락

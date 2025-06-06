@@ -56,11 +56,11 @@ resource "aws_lambda_function" "alert_handler" {
   filename        = "lambda.zip"
   source_code_hash = filebase64sha256("lambda.zip")
 
-  environment {
+   environment {
     variables = {
-      WEBHOOK_URL    = "https://hooks.slack.com/services/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"
-      VMWARE_API     = "http://125.179.40.152:5000/webhook/restore"
-      EC2_BACKUP_API = "http://3.37.80.69:5000/webhook/backup"
+      WEBHOOK_URL    = var.webhook_url
+      VMWARE_API     = var.vmware_api
+      EC2_BACKUP_API = var.ec2_backup_api
     }
   }
 }

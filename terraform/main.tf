@@ -58,7 +58,7 @@ resource "aws_lambda_function" "alert_handler" {
 
   environment {
     variables = {
-      WEBHOOK_URL    = "https://hooks.slack.com/services/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"
+      WEBHOOK_URL    = "https://hooks.slack.com/services/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"
       VMWARE_API     = "http://125.179.40.152:5000/webhook/restore"
       EC2_BACKUP_API = "http://3.37.80.69:5000/webhook/backup"
     }

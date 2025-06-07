@@ -1,5 +1,6 @@
 import os
 import requests
+import json
 
 def handler(event, context):
     webhook_url = os.environ['WEBHOOK_URL']

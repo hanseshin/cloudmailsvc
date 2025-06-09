@@ -4,7 +4,7 @@
 
 이 프로젝트는 AWS EC2와 온프레미스 VMware를 Active-Standby 구조로 구성한 **하이브리드 클라우드 장애 복구 시스템**입니다.  
 EC2 서버가 다운되면 자동으로 VMware에서 복원 서버가 활성화되며, Slack을 통해 알림을 받고, DB 백업과 복원, 모니터링을 자동화합니다.  
-또한 웹 앱에 **Amazon SES(Simple Email Service)**를 활용한 메일 발송 기능도 포함되어 있습니다.
+웹 앱은 오픈소스를 사용했으며  **Amazon SES(Simple Email Service)**를 활용한 메일 발송 기능을 추가해주었습니다.
 
 ---
 
@@ -14,11 +14,11 @@ EC2 서버가 다운되면 자동으로 VMware에서 복원 서버가 활성화�
   - Flask 기반 웹 애플리케이션  
   - SQLite 데이터베이스  
   - Amazon SES를 통한 메일 발송  
-  - S3에 DB 백업 자동화 (Shell + cron + Lambda backup trigger)
+  - S3에 DB 주기적 백업 자동화 (Shell + cron )
   
 - **VMware (온프레미스)**  
   - Flask 서버 대기 (수동/자동 기동 가능)  
-  - Lambda Webhook 요청 시 S3로부터 DB 복원
+  - Lambda 요청 시 S3로부터 DB 복원
 
 - **AWS 서비스**
   - **Route53**: 헬스체크 및 DNS 장애 조치 (Failover)
@@ -37,9 +37,8 @@ EC2 서버가 다운되면 자동으로 VMware에서 복원 서버가 활성화�
 ## 🔁 장애 복구 흐름
 
 1. EC2에서 **SQLite → S3 주기적 백업** (`cron`)
-2. 웹 애플리케이션에서 **Amazon SES를 통한 이메일 발송**
-3. **Route53 헬스체크**로 EC2 상태 모니터링
-4. 장애 발생 시:
+2. **Route53 헬스체크**로 EC2 상태 모니터링
+3. 장애 발생 시:
    - CloudWatch Alarm → SNS → Lambda 실행
    - Lambda:
      - VMware에 Webhook POST (`/webhook/restore`) 요청

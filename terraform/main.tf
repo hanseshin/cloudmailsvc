@@ -96,7 +96,7 @@ resource "aws_cloudwatch_metric_alarm" "ec2_cpu_high" {
   alarm_actions       = [aws_sns_topic.alarm_topic_useast.arn]
 
   dimensions = {
-    InstanceId = "<i-0d1b5cac7878af70e>" # 실제 인스턴스 ID로 변경
+    InstanceId = "<i-0d1b5cac7878af70e>" 
   }
 }
 

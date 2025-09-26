@@ -1,6 +1,3 @@
-provider "aws" {
-  region = "ap-northeast-2"
-}
 
 provider "aws" {
   alias  = "useast1"
@@ -82,42 +79,10 @@ resource "aws_lambda_permission" "allow_sns_invoke" {
   source_arn    = aws_sns_topic.alarm_topic_useast.arn
 }
 
-resource "aws_cloudwatch_metric_alarm" "ec2_cpu_high" {
-  provider            = aws.useast1
-  alarm_name          = "EC2HighCPU"
-  comparison_operator = "GreaterThanThreshold"
-  evaluation_periods  = 2
-  metric_name         = "CPUUtilization"
-  namespace           = "AWS/EC2"
-  period              = 60
-  statistic           = "Average"
-  threshold           = 70
-  alarm_description   = "EC2 인스턴스 CPU 사용률 70% 초과"
-  alarm_actions       = [aws_sns_topic.alarm_topic_useast.arn]
 
-  dimensions = {
-    InstanceId = "<i-0d1b5cac7878af70e>" 
-  }
-}
 
-# CloudWatch Alarm (us-east-1)
-resource "aws_cloudwatch_metric_alarm" "route53_alarm" {
-  provider            = aws.useast1
-  alarm_name          = "Route53HealthCheckFail"
-  comparison_operator = "LessThanThreshold"
-  evaluation_periods  = 1
-  metric_name         = "HealthCheckStatus"
-  namespace           = "AWS/Route53"
-  period              = 60
-  statistic           = "Minimum"
-  threshold           = 1
-  alarm_description   = "Route53 헬스체크 실패 시 알람 발생"
-  alarm_actions       = [aws_sns_topic.alarm_topic_useast.arn]
 
-  dimensions = {
-    HealthCheckId = "2fa3b506-4146-4b78-8bd4-4a5421aa8db9"
-  }
-}
+
 
 # Log Group (us-east-1)
 resource "aws_cloudwatch_log_group" "lambda_log_group" {

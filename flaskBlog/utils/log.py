@@ -20,4 +20,5 @@ match exists(LOG_FOLDER_ROOT):
     case False:  # If LOG_FOLDER_ROOT doesn't exist
         mkdir(LOG_FOLDER_ROOT)  # Create LOG_FOLDER_ROOT directory
 
-Log = Tamga(logToFile=LOG_TO_FILE, logToConsole=CUSTOM_LOGGER, logFile=LOG_FILE_ROOT)
+# 수정된 코드 (정상 작동)
+Log = Tamga(log_to_file=LOG_TO_FILE, log_to_console=CUSTOM_LOGGER, log_file_path=LOG_FILE_ROOT)

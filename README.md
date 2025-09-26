@@ -10,6 +10,12 @@ EC2 서버가 다운되면 자동으로 VMware에서 복원 서버가 활성화�
 
 ## 🧱 아키텍처 구성
 
+
+<img width="1624" height="1170" alt="image" src="https://github.com/user-attachments/assets/b628a09f-a66f-4106-9a19-f2c39721a40f" />
+
+
+
+
 - **EC2 (Ubuntu)**  
   - Flask 기반 웹 애플리케이션  
   - SQLite 데이터베이스  

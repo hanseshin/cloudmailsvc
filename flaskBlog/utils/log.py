@@ -21,4 +21,9 @@ match exists(LOG_FOLDER_ROOT):
         mkdir(LOG_FOLDER_ROOT)  # Create LOG_FOLDER_ROOT directory
 
 # 수정된 코드 (정상 작동)
-Log = Tamga(log_to_file=LOG_TO_FILE, log_to_console=CUSTOM_LOGGER, log_file_path=LOG_FILE_ROOT)
+Log = Tamga(
+    file_output=LOG_TO_FILE,
+    console_output=CUSTOM_LOGGER,
+    file_path=LOG_FILE_ROOT
+)
+

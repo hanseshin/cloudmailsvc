@@ -4,7 +4,7 @@
 
 이 프로젝트는 AWS EC2와 온프레미스 VMware를 Active-Standby 구조로 구성한 **하이브리드 클라우드 장애 복구 시스템**입니다.  
 EC2 서버가 다운되면 자동으로 VMware에서 복원 서버가 활성화되며, Slack을 통해 알림을 받고, DB 백업과 복원, 모니터링을 자동화합니다.  
-웹 앱은 오픈소스를 사용했으며  **Amazon SES(Simple Email Service)**를 활용한 메일 발송 기능을 추가해주었습니다.
+웹 앱은 오픈소스를 사용했으며  Amazon SES(Simple Email Service)를 활용한 메일 발송 기능을 추가해주었습니다.
 
 ---
 

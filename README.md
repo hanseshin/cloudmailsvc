@@ -1,16 +1,17 @@
 # 🛠 하이브리드 클라우드 이중화 DR 웹 앱 서비스
 
-## 1. 개요
+## 개요
 
 이 프로젝트는 AWS EC2와 온프레미스 VMware를 Active-Standby 구조로 구성한 **하이브리드 클라우드 이중화 DR 웹 앱 서비스**입니다.  
-EC2 서버가 다운되면 자동으로 VMware에서 복원 서버가 활성화되며, Slack을 통해 알림을 받고, DB 백업과 복원, 모니터링을 자동화 수행합니다.  
-웹 앱은 MIT 라이선스 오픈소스를 사용했으며  Amazon SES를 활용한 메일 발송 기능을 추가해주었습니다.
+AWS EC2가 장애로 동작 불가 상태가 되면 VMware Standby 서버가 자동 활성화되며,
+DNS Failover, DB 복원, Slack 알림까지 완전 자동화된 DR 시나리오를 제공합니다.
 
----
+웹 애플리케이션은 Flask 기반 오픈소스를 사용하였으며,
+추가로 Amazon SES(Simple Email Service) 기반 메일 발송 기능을 구현했습니다.
 
 
 
-## 2. 아키텍처 구성
+## 아키텍처 구성
 
 
 <img width="1624" height="1170" alt="image" src="https://github.com/user-attachments/assets/b628a09f-a66f-4106-9a19-f2c39721a40f" />
